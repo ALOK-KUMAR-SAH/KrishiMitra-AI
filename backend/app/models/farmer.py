@@ -3,7 +3,7 @@ from __future__ import annotations
 from datetime import datetime
 from decimal import Decimal
 
-from sqlalchemy import DateTime, ForeignKey, Integer, Numeric, String, Text, func
+from sqlalchemy import DateTime, ForeignKey, Integer, Numeric, String, func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db.database import Base
@@ -39,3 +39,4 @@ class Farmer(Base):
     )
 
     user = relationship("User", back_populates="farmer_profile")
+    recommendations = relationship("CropRecommendationHistory", back_populates="farmer", cascade="all, delete-orphan")
