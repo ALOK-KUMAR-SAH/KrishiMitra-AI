@@ -3,6 +3,7 @@ from app.services.farmer_service import create_farmer_profile, get_farmer_profil
 from app.services.crop_recommendation_service import CropRecommendationService
 from app.services.disease_detection_service import DiseaseDetectionService
 from app.services.harvest_prediction_service import HarvestPredictionService
+from app.services.shelf_life_prediction_service import ShelfLifePredictionService
 
 __all__ = [
 	"authenticate_user",
@@ -14,4 +15,5 @@ __all__ = [
 	"CropRecommendationService",
 	"DiseaseDetectionService",
 	"HarvestPredictionService",
+	"ShelfLifePredictionService",
 ]
