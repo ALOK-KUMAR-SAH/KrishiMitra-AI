@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from sqlalchemy import Boolean, CheckConstraint, DateTime, Integer, String, func
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db.database import Base
 
@@ -33,3 +33,4 @@ class User(Base):
         onupdate=func.now(),
         nullable=False,
     )
+    farmer_profile = relationship("Farmer", back_populates="user", uselist=False)
