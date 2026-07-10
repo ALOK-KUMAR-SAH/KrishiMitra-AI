@@ -34,3 +34,4 @@ class User(Base):
         nullable=False,
     )
     farmer_profile = relationship("Farmer", back_populates="user", uselist=False)
+    buyer_profile = relationship("Buyer", back_populates="user", uselist=False)

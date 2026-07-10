@@ -5,6 +5,7 @@ from app.schemas.harvest_prediction import HarvestPredictionHistoryItem, Harvest
 from app.schemas.shelf_life_prediction import ShelfLifePredictionHistoryItem, ShelfLifePredictionHistoryResponse, ShelfLifePredictionRequest, ShelfLifePredictionResponse
 from app.schemas.produce_quality import QualityGradingRequest, QualityGradingResponse, QualityHistoryResponse, QualityHistoryItem, QualityPrediction
 from app.schemas.marketplace import MarketplaceListingCreate, MarketplaceListingResponse, MarketplaceListingsResponse, MarketplaceListingUpdate
+from app.schemas.buyer import BuyerCreate, BuyerResponse, BuyerUpdate
 from app.schemas.farmer import FarmerCreate, FarmerResponse, FarmerUpdate
 from app.schemas.crop_recommendation import CropPrediction, CropRecommendationHistoryItem, CropRecommendationRequest, CropRecommendationResponse
 from app.schemas.user import UserCreate, UserLogin, UserRead, UserResponse, UserRole
@@ -35,6 +36,9 @@ __all__ = [
 	"MarketplaceListingResponse",
 	"MarketplaceListingsResponse",
 	"MarketplaceListingUpdate",
+	"BuyerCreate",
+	"BuyerResponse",
+	"BuyerUpdate",
 	"CropPrediction",
 	"CropRecommendationHistoryItem",
 	"CropRecommendationRequest",

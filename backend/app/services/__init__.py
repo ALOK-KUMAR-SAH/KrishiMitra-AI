@@ -6,6 +6,7 @@ from app.services.harvest_prediction_service import HarvestPredictionService
 from app.services.shelf_life_prediction_service import ShelfLifePredictionService
 from app.services.produce_quality_service import ProduceQualityService
 from app.services.marketplace_service import MarketplaceService
+from app.services.buyer_service import create_buyer_profile, get_buyer_profile, update_buyer_profile
 
 __all__ = [
 	"authenticate_user",
@@ -20,4 +21,7 @@ __all__ = [
 	"ShelfLifePredictionService",
 	"ProduceQualityService",
 	"MarketplaceService",
+	"create_buyer_profile",
+	"get_buyer_profile",
+	"update_buyer_profile",
 ]
