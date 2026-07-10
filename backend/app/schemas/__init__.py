@@ -4,6 +4,7 @@ from app.schemas.disease_detection import DiseaseDetectionHistoryItem, DiseaseDe
 from app.schemas.harvest_prediction import HarvestPredictionHistoryItem, HarvestPredictionHistoryResponse, HarvestPredictionRequest, HarvestPredictionResponse
 from app.schemas.shelf_life_prediction import ShelfLifePredictionHistoryItem, ShelfLifePredictionHistoryResponse, ShelfLifePredictionRequest, ShelfLifePredictionResponse
 from app.schemas.produce_quality import QualityGradingRequest, QualityGradingResponse, QualityHistoryResponse, QualityHistoryItem, QualityPrediction
+from app.schemas.marketplace import MarketplaceListingCreate, MarketplaceListingResponse, MarketplaceListingsResponse, MarketplaceListingUpdate
 from app.schemas.farmer import FarmerCreate, FarmerResponse, FarmerUpdate
 from app.schemas.crop_recommendation import CropPrediction, CropRecommendationHistoryItem, CropRecommendationRequest, CropRecommendationResponse
 from app.schemas.user import UserCreate, UserLogin, UserRead, UserResponse, UserRole
@@ -30,6 +31,10 @@ __all__ = [
 	"QualityHistoryResponse",
 	"QualityHistoryItem",
 	"QualityPrediction",
+	"MarketplaceListingCreate",
+	"MarketplaceListingResponse",
+	"MarketplaceListingsResponse",
+	"MarketplaceListingUpdate",
 	"CropPrediction",
 	"CropRecommendationHistoryItem",
 	"CropRecommendationRequest",

@@ -6,5 +6,6 @@ from app.models.disease_detection import DiseaseDetectionHistory
 from app.models.harvest_prediction import HarvestPredictionHistory
 from app.models.shelf_life_prediction import ShelfLifePredictionHistory
 from app.models.produce_quality import ProduceQualityHistory
+from app.models.marketplace import MarketplaceListing
 
-__all__ = ["Base", "CropRecommendationHistory", "DiseaseDetectionHistory", "HarvestPredictionHistory", "ShelfLifePredictionHistory", "ProduceQualityHistory", "Farmer", "User"]
+__all__ = ["Base", "CropRecommendationHistory", "DiseaseDetectionHistory", "HarvestPredictionHistory", "ShelfLifePredictionHistory", "ProduceQualityHistory", "MarketplaceListing", "Farmer", "User"]

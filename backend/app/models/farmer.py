@@ -44,3 +44,4 @@ class Farmer(Base):
     harvest_predictions = relationship("HarvestPredictionHistory", back_populates="farmer", cascade="all, delete-orphan")
     shelf_life_predictions = relationship("ShelfLifePredictionHistory", back_populates="farmer", cascade="all, delete-orphan")
     quality_grades = relationship("ProduceQualityHistory", back_populates="farmer", cascade="all, delete-orphan")
+    marketplace_listings = relationship("MarketplaceListing", back_populates="farmer", cascade="all, delete-orphan")
