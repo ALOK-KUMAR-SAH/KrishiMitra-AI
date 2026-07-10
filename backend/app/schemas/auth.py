@@ -6,6 +6,9 @@ class Token(BaseModel):
     token_type: str = "bearer"
 
 
-class TokenPayload(BaseModel):
+class TokenData(BaseModel):
     sub: str | None = None
     exp: int | None = None
+
+
+TokenPayload = TokenData
