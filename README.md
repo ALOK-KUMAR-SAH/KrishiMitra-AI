@@ -2,16 +2,15 @@
 
 <div align="center">
 
-### 🤖 An End-to-End Multi-Agent AI Platform for Sustainable Agriculture
+### 🤖 AI-Powered Agriculture Platform (Seed to Post-Harvest)
 
-**From Seed to Market — Empowering Farmers with Artificial Intelligence**
+**Helping farmers with crop planning, crop health, harvest timing, quality grading, and shelf-life insights**
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue)
 ![FastAPI](https://img.shields.io/badge/FastAPI-Backend-green)
-![React](https://img.shields.io/badge/React-Frontend-61DAFB)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-blue)
-![PyTorch](https://img.shields.io/badge/PyTorch-AI-red)
-![YOLO](https://img.shields.io/badge/Computer%20Vision-YOLO-orange)
+![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-ORM-orange)
+![Alembic](https://img.shields.io/badge/Alembic-Migrations-purple)
+![JWT](https://img.shields.io/badge/Auth-JWT-yellowgreen)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
 </div>
@@ -20,298 +19,240 @@
 
 ## 📖 Overview
 
-KrishiMitra AI is an intelligent decision-support platform designed to assist farmers throughout the agricultural lifecycle while placing a strong emphasis on reducing post-harvest losses.
+**KrishiMitra AI** is an intelligent decision-support platform for agriculture with a strong focus on reducing **post-harvest losses**.
 
-The platform integrates Artificial Intelligence, Machine Learning, Computer Vision, Predictive Analytics, and Generative AI to help farmers make informed decisions from crop planning to market selling.
-
----
-
-# 🎯 Problem Statement
-
-India loses a significant amount of agricultural produce after harvest due to:
-
-- Poor storage
-- Inadequate grading
-- Limited shelf-life prediction
-- Inefficient logistics
-- Lack of market intelligence
-- Food wastage
-
-Most existing agricultural applications solve only one part of the problem.
-
-KrishiMitra AI aims to provide an integrated AI-powered platform covering the complete agricultural value chain.
+The current repository contains a **production-style FastAPI backend** with modular architecture, authentication, profile management, prediction APIs, history tracking, and API documentation.  
+Prediction services currently use deterministic logic and are designed to be replaced with trained ML/CV models without changing API contracts.
 
 ---
 
-# 💡 Proposed Solution
+## 🎯 Problem Statement
 
-KrishiMitra AI uses multiple AI agents working together to support farmers at every stage.
+A significant share of agricultural losses occurs after harvest due to:
 
-```
-Crop Planning
-      │
-      ▼
-Planting Guidance
-      │
-      ▼
-Crop Monitoring
-      │
-      ▼
-Disease Detection
-      │
-      ▼
-Harvest Prediction
-      │
-      ▼
-Post-Harvest Quality Assessment
-      │
-      ▼
-Storage Optimization
-      │
-      ▼
-Transportation
-      │
-      ▼
-Market Recommendation
-      │
-      ▼
-Waste Utilization
-```
+- Poor grading and quality assessment
+- Limited shelf-life visibility
+- Weak storage and logistics planning
+- Lack of timely market intelligence
+
+Most tools solve isolated parts.  
+**KrishiMitra AI** aims to provide an integrated, end-to-end platform across the agricultural lifecycle.
 
 ---
 
-# 🤖 AI Modules
+## ✅ Current Implementation Status
 
-## 🌱 Crop Planning Agent
+### Implemented (Backend)
 
-- Crop recommendation
-- Soil analysis
-- Weather-based planning
-- Yield prediction
+- Modular FastAPI architecture
+- JWT authentication (register/login/me)
+- Role-aware protected routes
+- Farmer profile management
+- Prediction APIs with history tables:
+  - Crop recommendation
+  - Disease detection
+  - Harvest prediction
+  - Shelf-life prediction
+  - Produce quality grading
+- SQLAlchemy models + Alembic migrations
+- OpenAPI/Swagger documentation
+- Health and root endpoints
 
----
+### In Progress / Planned
 
-## 🌿 Crop Health Agent
-
-- Disease detection
-- Pest identification
-- Nutrient deficiency detection
-- Growth monitoring
-
----
-
-## 🌾 Harvest Intelligence Agent
-
-- Harvest readiness prediction
-- Yield estimation
-- Harvest scheduling
-
----
-
-## 📦 Post-Harvest Agent
-
-- Produce quality grading
-- Shelf-life prediction
-- Spoilage risk analysis
-- Freshness assessment
+- Real ML/CV model integration
+- Marketplace and order lifecycle
+- Weather + market intelligence APIs
+- Frontend application
+- PostgreSQL migration and cloud deployment
+- Test automation and CI/CD
 
 ---
 
-## ❄ Storage Intelligence
+## 🧠 AI Modules (Roadmap-Aligned)
 
-- Storage recommendation
-- Cold-chain monitoring
-- Humidity prediction
-- Temperature optimization
-
----
-
-## 🚚 Logistics Agent
-
-- Route optimization
-- Transportation planning
-- Packaging recommendation
+- 🌱 **Crop Recommendation**
+- 🌿 **Disease Detection**
+- 🌾 **Harvest Prediction**
+- 📦 **Shelf-Life Prediction**
+- 🥭 **Produce Quality Grading**
+- 🚚 **Logistics & Market Intelligence** (planned)
+- 🤖 **Multilingual AI Assistant** (planned)
 
 ---
 
-## 🏪 Market Intelligence Agent
+## 🏗 Architecture
 
-- Best market recommendation
-- Price prediction
-- Buyer recommendation
-
----
-
-## ♻ Waste Intelligence Agent
-
-Recommendations for:
-
-- Food processing
-- Animal feed
-- Compost
-- Biogas
-- Recycling
-
----
-
-## 🤖 KrishiMitra AI Assistant
-
-A multilingual AI assistant capable of helping farmers through text or voice interactions.
-
-Example questions:
-
-- Which crop should I grow?
-- Is my crop ready for harvest?
-- How long can I store tomatoes?
-- Which market should I sell in?
-- What caused this disease?
-
----
-
-# 🏗 System Architecture
-
-```
-Frontend (React / Streamlit)
-            │
-            ▼
-      FastAPI Backend
-            │
- ┌──────────┼──────────┐
- │          │          │
- ▼          ▼          ▼
-AI Models Database LLM Assistant
-            │
-            ▼
- Agricultural Dashboard
+```text
+Frontend (Planned: React)
+        │
+        ▼
+FastAPI Backend (Implemented)
+        │
+ ┌──────┼───────────┐
+ │      │           │
+ ▼      ▼           ▼
+Services DB Layer   Auth Layer
+        │
+        ▼
+AI Model Adapter Layer (Current: deterministic, Future: trained models)
 ```
 
 ---
 
-# 🛠 Tech Stack
+## 🛠 Tech Stack
 
-## Frontend
-
-- React
-- Tailwind CSS
-
-## Backend
-
+### Backend (Current)
+- Python 3.11
 - FastAPI
+- SQLAlchemy
+- Alembic
+- Pydantic
+- JWT Auth
+- SQLite (development)
 
-## Database
-
-- PostgreSQL
-
-## Artificial Intelligence
-
-- PyTorch
+### AI/ML (Planned Integration)
 - Scikit-learn
-- YOLO
+- PyTorch / TensorFlow
 - OpenCV
 - XGBoost
 
-## Deployment
+### Frontend (Planned)
+- React
+- Tailwind CSS
 
+### Deployment (Planned)
 - Docker
 - GitHub Actions
+- Render / Railway / AWS / Azure
 
 ---
 
-# 📂 Project Structure
+## 📂 Project Structure
 
-```
-KrishiMitra-AI
-│
-├── frontend/
+```text
+KrishiMitra-AI/
 ├── backend/
-├── ai_models/
-├── datasets/
-├── notebooks/
-├── docs/
-├── deployment/
-├── database/
-├── assets/
+│   └── app/
+│       ├── api/
+│       ├── core/
+│       ├── db/
+│       ├── models/
+│       ├── schemas/
+│       ├── services/
+│       └── main.py
+├── frontend/        # planned
+├── ai_models/       # planned
+├── datasets/        # planned
+├── deployment/      # planned
+├── docs/            # planned
 └── README.md
 ```
 
 ---
 
-# 🚀 Development Roadmap
+## 🔌 API Highlights
 
-### Phase 1
+### Auth
+- `POST /auth/register`
+- `POST /auth/login`
+- `GET /auth/me`
 
-- Project setup
-- Backend
-- Database
-- Authentication
+### Farmer
+- `POST /farmers/profile`
+- `GET /farmers/profile`
+- `PUT /farmers/profile`
 
-### Phase 2
+### AI Prediction (current deterministic implementations)
+- `POST /crop/recommend` + `GET /crop/history`
+- `POST /disease/predict` + `GET /disease/history`
+- `POST /harvest/predict` + `GET /harvest/history`
+- `POST /shelf-life/predict` + `GET /shelf-life/history`
+- `POST /quality/predict` + `GET /quality/history`
 
-- Crop recommendation
-- Disease detection
-- Harvest prediction
+### Utility
+- `GET /health`
+- `GET /`
+- `GET /docs`
+- `GET /openapi.json`
+
+---
+
+## 🗺 Roadmap
+
+### Phase 1 (Done)
+- Backend setup, auth, profile, prediction APIs, history, docs
+
+### Phase 2 (Next)
+- Replace deterministic logic with trained models
+- Add model versioning + inference loaders
+- Add test suite (unit + API)
 
 ### Phase 3
-
-- Post-harvest intelligence
-- Shelf-life prediction
-- Storage optimization
+- Marketplace core (products, cart, orders)
+- Buyer/consumer modules
+- Dashboard APIs
 
 ### Phase 4
-
-- Market recommendation
-- Logistics
-- AI assistant
+- Weather + market data integrations
+- Notification services
+- Storage/logistics modules
 
 ### Phase 5
-
-- Testing
-- Deployment
-- Documentation
-
----
-
-# 👥 Team
-
-### Alok Kumar Sah
-
-**Team Lead**
-
-- Artificial Intelligence
-- Machine Learning
-- Computer Vision
-- Backend Development
-- Research
-
-### Aman Anand
-
-**Agriculture Domain Expert**
-
-- Crop Science
-- Post-Harvest Management
-- Agricultural Validation
-- Supply Chain
-- Domain Research
+- Frontend integration
+- PostgreSQL + cloud storage
+- CI/CD + production deployment
 
 ---
 
-# 🎯 Hackathon
+## 🧪 Local Development (Backend)
 
-**CII Post-Harvest Innovation Hackathon**
+```bash
+# 1) Clone
+git clone https://github.com/ALOK-KUMAR-SAH/KrishiMitra-AI.git
+cd KrishiMitra-AI/backend
 
-Organised by:
+# 2) Create virtual environment
+python -m venv .venv
+source .venv/bin/activate   # Windows: .venv\Scripts\activate
 
-- Confederation of Indian Industry (CII-FACE)
-- IIT Guwahati Technology Incubation Centre
+# 3) Install dependencies
+pip install -r requirements.txt
+
+# 4) Run migrations
+alembic upgrade head
+
+# 5) Start server
+uvicorn app.main:app --reload
+```
+
+Open:
+- Swagger UI: `http://127.0.0.1:8000/docs`
+- OpenAPI JSON: `http://127.0.0.1:8000/openapi.json`
 
 ---
 
-# 🌱 Vision
+## 👥 Team
 
-To build an AI-powered platform that empowers farmers with intelligent recommendations throughout the agricultural lifecycle while reducing post-harvest losses and promoting sustainable farming practices.
+### Alok Kumar Sah — Team Lead
+- AI/ML, CV, backend engineering, architecture
+
+### Aman Anand — Agriculture Domain Expert
+- Crop science, post-harvest workflows, domain validation
 
 ---
 
-# 📜 License
+## 🏆 Hackathon Alignment
+
+Built for **CII Post-Harvest Innovation Hackathon** with emphasis on:
+
+- Reducing post-harvest losses
+- Better grading and shelf-life decisions
+- Data-driven harvest and market planning
+- End-to-end agricultural value chain digitization
+
+---
+
+## 📜 License
 
 This project is licensed under the MIT License.
