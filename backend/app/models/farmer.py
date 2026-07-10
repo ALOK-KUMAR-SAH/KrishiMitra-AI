@@ -41,3 +41,4 @@ class Farmer(Base):
     user = relationship("User", back_populates="farmer_profile")
     recommendations = relationship("CropRecommendationHistory", back_populates="farmer", cascade="all, delete-orphan")
     disease_detections = relationship("DiseaseDetectionHistory", back_populates="farmer", cascade="all, delete-orphan")
+    harvest_predictions = relationship("HarvestPredictionHistory", back_populates="farmer", cascade="all, delete-orphan")
