@@ -4,6 +4,7 @@ from app.services.crop_recommendation_service import CropRecommendationService
 from app.services.disease_detection_service import DiseaseDetectionService
 from app.services.harvest_prediction_service import HarvestPredictionService
 from app.services.shelf_life_prediction_service import ShelfLifePredictionService
+from app.services.produce_quality_service import ProduceQualityService
 
 __all__ = [
 	"authenticate_user",
@@ -16,4 +17,5 @@ __all__ = [
 	"DiseaseDetectionService",
 	"HarvestPredictionService",
 	"ShelfLifePredictionService",
+	"ProduceQualityService",
 ]
