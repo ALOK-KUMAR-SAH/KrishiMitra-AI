@@ -4,7 +4,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.models.farmer import Farmer
-from app.models.marketplace import MarketplaceListing
+from app.models.marketplace import ProduceListing
 from app.schemas.marketplace import MarketplaceListingCreate, MarketplaceListingUpdate
 
 
@@ -30,9 +30,9 @@ class MarketplaceService:
         if listing_in.status is not None and self._normalize_status(listing_in.status) not in ALLOWED_STATUSES:
             raise ValueError("status")
 
-    def create_listing(self, farmer: Farmer, listing_in: MarketplaceListingCreate) -> MarketplaceListing:
+    def create_listing(self, farmer: Farmer, listing_in: MarketplaceListingCreate) -> ProduceListing:
         self._validate_listing(listing_in)
-        listing = MarketplaceListing(
+        listing = ProduceListing(
             farmer_id=farmer.farmer_id,
             crop_name=listing_in.crop_name.strip().title(),
             quantity=listing_in.quantity,
@@ -51,19 +51,19 @@ class MarketplaceService:
         self.db.refresh(listing)
         return listing
 
-    def get_public_listings(self) -> list[MarketplaceListing]:
+    def get_public_listings(self) -> list[ProduceListing]:
         statement = (
-            select(MarketplaceListing)
-            .where(MarketplaceListing.status == "available")
-            .order_by(MarketplaceListing.created_at.desc(), MarketplaceListing.id.desc())
+            select(ProduceListing)
+            .where(ProduceListing.status == "available")
+            .order_by(ProduceListing.created_at.desc(), ProduceListing.id.desc())
         )
         return list(self.db.scalars(statement).all())
 
-    def get_listing_by_id(self, listing_id: int) -> MarketplaceListing | None:
-        statement = select(MarketplaceListing).where(MarketplaceListing.id == listing_id)
+    def get_listing_by_id(self, listing_id: int) -> ProduceListing | None:
+        statement = select(ProduceListing).where(ProduceListing.id == listing_id)
         return self.db.scalar(statement)
 
-    def get_listing_for_view(self, listing_id: int, farmer: Farmer | None = None) -> MarketplaceListing | None:
+    def get_listing_for_view(self, listing_id: int, farmer: Farmer | None = None) -> ProduceListing | None:
         listing = self.get_listing_by_id(listing_id)
         if listing is None:
             return None
@@ -73,15 +73,15 @@ class MarketplaceService:
             return listing
         return None
 
-    def get_my_listings(self, farmer: Farmer) -> list[MarketplaceListing]:
+    def get_my_listings(self, farmer: Farmer) -> list[ProduceListing]:
         statement = (
-            select(MarketplaceListing)
-            .where(MarketplaceListing.farmer_id == farmer.farmer_id)
-            .order_by(MarketplaceListing.created_at.desc(), MarketplaceListing.id.desc())
+            select(ProduceListing)
+            .where(ProduceListing.farmer_id == farmer.farmer_id)
+            .order_by(ProduceListing.created_at.desc(), ProduceListing.id.desc())
         )
         return list(self.db.scalars(statement).all())
 
-    def update_listing(self, farmer: Farmer, listing: MarketplaceListing, listing_in: MarketplaceListingUpdate) -> MarketplaceListing:
+    def update_listing(self, farmer: Farmer, listing: ProduceListing, listing_in: MarketplaceListingUpdate) -> ProduceListing:
         if listing.farmer_id != farmer.farmer_id:
             raise PermissionError("forbidden")
         self._validate_listing(listing_in)
@@ -102,7 +102,7 @@ class MarketplaceService:
         self.db.refresh(listing)
         return listing
 
-    def delete_listing(self, farmer: Farmer, listing: MarketplaceListing) -> None:
+    def delete_listing(self, farmer: Farmer, listing: ProduceListing) -> None:
         if listing.farmer_id != farmer.farmer_id:
             raise PermissionError("forbidden")
         self.db.delete(listing)

@@ -6,7 +6,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.db.database import Base
 
 
-class MarketplaceListing(Base):
+class ProduceListing(Base):
     __tablename__ = "marketplace_listings"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)

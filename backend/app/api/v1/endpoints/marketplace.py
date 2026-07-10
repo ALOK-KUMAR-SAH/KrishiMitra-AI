@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from app.api.dependencies import get_current_active_farmer
 from app.db.database import get_db
 from app.models.farmer import Farmer
-from app.models.marketplace import MarketplaceListing
+from app.models.marketplace import ProduceListing
 from app.models.user import User
 from app.schemas.marketplace import (
     MarketplaceListingCreate,
